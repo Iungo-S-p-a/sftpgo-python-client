@@ -17,15 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"  # Usa una versione compatibile di Python
-
-      - name: Try Debug
-        run: | 
-          cat .git/config
-
-      - name: Print Git Remote URL
-        run: |
-          echo "Remote URL: $(git config --get remote.origin.url)"
+          python-version: "3.10"
 
       - name: Install openapi-python-client
         run: |
@@ -50,8 +42,4 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add SFTPgo-client
           git commit -m "chore: update Python client from OpenAPI spec" 
-          git push origin main
-          
-        #git diff --cached --quiet || (git commit -m "chore: update Python client from OpenAPI spec" && git push)
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git diff --cached --quiet || (git commit -m "chore: update Python client from OpenAPI spec" && git push origin main)
